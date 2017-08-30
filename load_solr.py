@@ -41,7 +41,10 @@ def update(data):
         solr.add([doc], commit=shouldCommit)
 
     for i, row in enumerate(data):
-        getDocument('a', row, i)
+        try:
+            getDocument('a', row, i)
+        except:
+            print("an error")
 
     solr.commit()
 

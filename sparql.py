@@ -38,7 +38,7 @@ def getDescription(id):
     return None
 
 
-words = [row[0] for row in c.execute('''SELECT word from dbwords WHERE title is null''')]
+words = [row[0] for row in c.execute('''SELECT word from dbwords WHERE title is null ''')]
 for word in words:
     c = conn.cursor()
 
@@ -47,7 +47,10 @@ for word in words:
     except:
         print("error printing word")
 
-    t = (getDescription(word), word)
+    try:
+        t = (getDescription(word), word)
+    except:
+        print("an error occurred")
 
     try:
         print(t)
